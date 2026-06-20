@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc1394b1-df9c-43c9-89a0-311490a843cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/image_ds/maria_sharapova/001aa018f83f14d5a9cd30.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image_ds/maria_sharapova/001aa018f83f14d5a9cd30.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/image_ds/messi/_111066400_messi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image_ds/messi/_111066400_messi.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,8 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/arunmp/git/Image-Classification/model/image_ds/maria_sharapova"
+    "last_opened_file_path": "/Users/arunmp/git/Image-Classification/model/image_ds/maria_sharapova",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
