@@ -4,6 +4,7 @@
     <list default="true" id="cc1394b1-df9c-43c9-89a0-311490a843cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/class_model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/model/class_model.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +38,21 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/arunmp/git/Image-Classification/model/image_ds/maria_sharapova&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/arunmp/git/Image-Classification/model/dataset&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/model/dataset" />
       <recent name="$PROJECT_DIR$/model/image_ds/maria_sharapova" />
       <recent name="$PROJECT_DIR$/model/image_ds/messi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/model" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/model/dataset" />
+      <recent name="$PROJECT_DIR$/model" />
     </key>
   </component>
   <component name="SharedIndexes">
