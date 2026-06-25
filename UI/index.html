@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportVision — Celebrity Face Classifier</title>
+  <meta name="description" content="Identify Virat Kohli, Messi, Federer, Sharapova or Serena Williams from a photo using AI face recognition." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Ambient blobs -->
+  <div class="ambient">
+    <div class="amb-blob amb-1"></div>
+    <div class="amb-blob amb-2"></div>
+  </div>
+
+  <!-- ── Ticker ── -->
+  <div class="ticker-strip" aria-hidden="true">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 3C12 3 9 7 9 12s3 9 3 9" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 3c0 0 3 4 3 9s-3 9-3 9" stroke="currentColor" stroke-width="2"/>
+            <path d="M3 12h18" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <span class="logo-name">Sport<em>Vision</em></span>
+      </div>
+      <div class="live-pill">
+        <span class="live-dot"></span>
+        Model Live
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <p class="hero-eyebrow">AI · Face Recognition · SVM Classifier</p>
+    <h1 class="hero-title">
+      Spot the<br><span>Legend.</span>
+    </h1>
+    <p class="hero-sub">
+      Upload a clear photo — our model detects your face, runs wavelet feature extraction, and tells you which of the 5 sports icons it is.
+    </p>
+  </section>
+
+  <!-- ── Athletes ── -->
+  <section class="athletes-section">
+    <p class="section-label">Recognisable Athletes</p>
+    <div class="athletes-grid">
+
+      <div class="athlete-card" data-key="virat_kohli" style="--ath-clr:#60a5fa;">
+        <span class="ath-flag">🇮🇳</span>
+        <div class="ath-initials" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6)">VK</div>
+        <p class="ath-name">Virat Kohli</p>
+        <p class="ath-sport-tag">Cricket</p>
+      </div>
+
+      <div class="athlete-card" data-key="messi" style="--ath-clr:#4ade80;">
+        <span class="ath-flag">🇦🇷</span>
+        <div class="ath-initials" style="background:linear-gradient(135deg,#14532d,#22c55e)">LM</div>
+        <p class="ath-name">Lionel Messi</p>
+        <p class="ath-sport-tag">Football</p>
+      </div>
+
+      <div class="athlete-card" data-key="roger_federer" style="--ath-clr:#fbbf24;">
+        <span class="ath-flag">🇨🇭</span>
+        <div class="ath-initials" style="background:linear-gradient(135deg,#78350f,#f59e0b)">RF</div>
+        <p class="ath-name">Roger Federer</p>
+        <p class="ath-sport-tag">Tennis</p>
+      </div>
+
+      <div class="athlete-card" data-key="maria_sharapova" style="--ath-clr:#fb7185;">
+        <span class="ath-flag">🇷🇺</span>
+        <div class="ath-initials" style="background:linear-gradient(135deg,#881337,#f43f5e)">MS</div>
+        <p class="ath-name">M. Sharapova</p>
+        <p class="ath-sport-tag">Tennis</p>
+      </div>
+
+      <div class="athlete-card" data-key="serena_williams" style="--ath-clr:#c084fc;">
+        <span class="ath-flag">🇺🇸</span>
+        <div class="ath-initials" style="background:linear-gradient(135deg,#4c1d95,#a855f7)">SW</div>
+        <p class="ath-name">Serena Williams</p>
+        <p class="ath-sport-tag">Tennis</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Classifier Workspace ── -->
+  <section class="workspace">
+    <div class="workspace-card">
+
+      <!-- LEFT: Upload -->
+      <div class="upload-col">
+        <p class="col-header">Upload Image</p>
+
+        <div class="drop-zone" id="dropZone">
+          <!-- Default state -->
+          <div class="drop-inner" id="dropInner">
+            <div class="drop-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <polyline points="17 8 12 3 7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Drag &amp; Drop</h3>
+            <p>or click anywhere to browse</p>
+            <span class="drop-hint">JPG · PNG · WEBP · Max 10 MB</span>
+          </div>
+
+          <!-- Preview state -->
+          <div class="img-preview-wrap" id="imgPreviewWrap" style="display:none">
+            <img id="previewImg" src="" alt="Preview" />
+            <div class="scan-overlay" id="scanOverlay">
+              <div class="scan-line"></div>
+              <div class="scan-corners">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+
+          <input type="file" id="fileInput" accept="image/*" hidden />
+        </div>
+
+        <div class="action-row" id="actionRow" style="display:none">
+          <button class="btn-reset" id="clearBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Reset
+          </button>
+          <button class="btn-classify" id="classifyBtn">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <polyline points="16 3 21 3 21 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Classify Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="v-divider">
+        <div class="vd-line"></div>
+        <div class="vd-node">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="vd-line"></div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <!-- Empty -->
+        <div class="state-empty" id="stateEmpty">
+          <div class="empty-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M11 8v3m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="state-title">Awaiting Upload</p>
+          <p class="state-sub">Upload a clear face photo of one of the 5 athletes. Confidence scores will appear right here.</p>
+        </div>
+
+        <!-- Loading -->
+        <div class="state-loading" id="stateLoading" style="display:none">
+          <div class="loader-track">
+            <div class="loader-bar"></div>
+          </div>
+          <p class="state-title">Analysing…</p>
+          <div class="loader-steps">
+            <div class="loader-step"><span class="step-dot"></span>Detecting face &amp; eyes</div>
+            <div class="loader-step"><span class="step-dot"></span>Extracting wavelet features</div>
+            <div class="loader-step"><span class="step-dot"></span>Running SVM classifier</div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="state-error" id="stateError" style="display:none">
+          <div class="err-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v4m0 4h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="state-title" id="errTitle">No Face Detected</p>
+          <p class="state-sub" id="errMsg">Please upload a clear photo where both eyes are fully visible.</p>
+        </div>
+
+        <!-- Success -->
+        <div class="state-success" id="stateSuccess" style="display:none">
+
+          <div class="winner-block" id="winnerBlock">
+            <div class="wb-top">
+              <div class="wb-initials" id="wbInitials"></div>
+              <div class="wb-meta">
+                <p class="wb-match-label">Best Match</p>
+                <p class="wb-name" id="wbName">—</p>
+                <p class="wb-sport" id="wbSport">—</p>
+              </div>
+              <div class="wb-confidence">
+                <span class="wb-pct" id="wbPct">0%</span>
+                <span class="wb-pct-label">Confidence</span>
+              </div>
+            </div>
+            <div class="wb-conf-bar">
+              <div class="wb-conf-fill" id="wbConfFill"></div>
+            </div>
+          </div>
+
+          <div class="probs-section">
+            <p class="probs-header">All Probabilities</p>
+            <div class="prob-list" id="probList"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="how-section">
+    <p class="section-label">How It Works</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <p class="step-num">01</p>
+        <p class="step-title">Face Detection</p>
+        <p class="step-desc">OpenCV Haar cascades locate your face and confirm both eyes are visible before processing begins.</p>
+      </div>
+      <div class="how-step">
+        <p class="step-num">02</p>
+        <p class="step-title">Wavelet Features</p>
+        <p class="step-desc">Daubechies db1 wavelet transform extracts high-frequency texture details far beyond raw pixel data.</p>
+      </div>
+      <div class="how-step">
+        <p class="step-num">03</p>
+        <p class="step-title">SVM Classification</p>
+        <p class="step-desc">A trained Support Vector Machine produces probability scores across all 5 sports celebrities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <p>Built with <strong>Flask</strong> · <strong>OpenCV</strong> · <strong>scikit-learn</strong> · <strong>PyWavelets</strong></p>
+    <p class="foot-line">Recognises: Virat Kohli · Lionel Messi · Roger Federer · Maria Sharapova · Serena Williams</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
