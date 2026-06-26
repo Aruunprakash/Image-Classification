@@ -196,7 +196,7 @@ function renderResult(result) {
   // Build a map: key -> probability
   const keyProbs = {};
   for (const [name, num] of Object.entries(classDict)) {
-    keyProbs[name] = classProbs[num] ?? 0;
+    keyProbs[name] = classProbs[name] ?? classProbs[num] ?? 0;
   }
 
   // Winner = the class with highest probability
