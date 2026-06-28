@@ -5,8 +5,7 @@
 
 'use strict';
 
-const SERVER_URL = 'http://localhost:8000/classify_image';
-
+const SERVER_URL ="https://sportvision-sports-person-image.onrender.com/classify_image";
 /* ─── Athlete metadata ─── */
 const ATHLETES = {
   virat_kohli:    { name: 'Virat Kohli',     sport: 'Cricket',  initials: 'VK', bg: 'linear-gradient(135deg,#1e3a8a,#3b82f6)', swatch: '#60a5fa' },
