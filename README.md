@@ -24,7 +24,7 @@ Users simply upload an image, and the application automatically detects the face
 
 ### 🚀 Frontend
 
-https://sports-vision-ai.netlify.app
+https://sportsvision-ai.netlify.app
 
 ### ⚙️ Backend API
 
