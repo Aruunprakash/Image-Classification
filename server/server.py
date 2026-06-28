@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from . import util      # <-- changed
+from . import util
+from .wavelet import w2d
 
 app = Flask(__name__)
 CORS(app)
