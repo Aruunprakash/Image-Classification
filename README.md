@@ -1,6 +1,5 @@
 # 🏆 SportVision AI — Sports Celebrity Image Classification
 
-![SportVision Banner](https://img.shields.io/badge/SportVision-AI%20Image%20Classification-1D4ED8?style=for-the-badge\&logo=opencv\&logoColor=white)
 [![Live Demo](https://img.shields.io/badge/Live_Demo-sports--vision--ai.netlify.app-blue?style=flat\&logo=netlify)](https://sports-vision-ai.netlify.app)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat\&logo=python\&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-3.x-000000?style=flat\&logo=flask\&logoColor=white)
